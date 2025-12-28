@@ -1,5 +1,6 @@
 package com.ozcnyldz.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +17,66 @@ public class EmployeeRepository {
     public List<Employee> getAllEmployeeList() {
         return employeeList;
     }
+    public Employee getEmployeeById(String id) {
+    	Employee findEmployee = null; 
+    	for (Employee employee : employeeList) {
+			if(id.equals(employee.getId())) {
+				findEmployee = employee; 
+				break;
+			}
+			
+		}
+    	return findEmployee;
+    }
+    
+    public List<Employee> getEmployeeWithParams(String firstnameString, String lastnameString) {
+
+        List<Employee> employeeWithParams = new ArrayList<>();
+
+        if (firstnameString == null && lastnameString == null) {
+            return employeeList;
+        }
+
+        for (Employee employee : employeeList) {
+
+            if (firstnameString != null && lastnameString != null) {
+                if (employee.getFirstnameString().equalsIgnoreCase(firstnameString)
+                    && employee.getLastnameString().equalsIgnoreCase(lastnameString)) {
+                    employeeWithParams.add(employee);
+                }
+            }
+
+            else if (firstnameString != null) {
+                if (employee.getFirstnameString().equalsIgnoreCase(firstnameString)) {
+                    employeeWithParams.add(employee);
+                }
+            }
+
+            else if (lastnameString != null) {
+                if (employee.getLastnameString().equalsIgnoreCase(lastnameString)) {
+                    employeeWithParams.add(employee);
+                }
+            }
+        }
+
+        return employeeWithParams;
+    }
+    
+    public Employee saveEmployee(Employee newEmployee) {
+    	employeeList.add(newEmployee);
+    	return newEmployee;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ozcnyldz.model.Employee;
+import com.ozcnyldz.model.UpdateEmployee;
 import com.ozcnyldz.repository.EmployeeRepository;
 
 @Service
@@ -27,5 +29,11 @@ public class EmployeeService {
     }
     public Employee saveEmployee(Employee newEmployee) {
     	return employeeRepository.saveEmployee(newEmployee);
+    }
+    public boolean deleteEmployee (String id) {
+    	return employeeRepository.deleteEmployee(id);
+    }
+    public Employee updateEmployee(String id,  UpdateEmployee request) {
+    	return employeeRepository.updateEmployee(id, request);
     }
 }

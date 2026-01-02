@@ -1,33 +1,60 @@
-# Spring Boot REST API – Lernprojekt
+# Spring Boot REST API – Lernprojekt (Employee Management)
 
-Dieses Projekt dient zum Lernen von:
-- Spring Boot
-- RESTful APIs
+Dieses Projekt ist ein **Spring Boot REST-API Lernprojekt**, das die grundlegenden Konzepte von **RESTful Web Services**, **Layered Architecture** und **In-Memory-Datenhaltung** demonstriert.
+
+Es eignet sich als Übungsprojekt sowie als **GitHub-Portfolio-Projekt**.
+
+---
+
+## 🎯 Lernziele
+
+- Entwicklung von RESTful APIs mit Spring Boot
+- Einsatz von HTTP-Methoden (GET, POST, PUT, DELETE)
 - Dependency Injection
 - Layered Architecture (Controller, Service, Repository)
-- Java Collections als In-Memory-Datenquelle
+- Arbeiten mit Java Collections als In-Memory-Datenquelle
+- Saubere API-Struktur und URL-Design
 
-## Technologien
+---
+
+## 🛠️ Technologien
+
 - Java 21
 - Spring Boot 3.x
+- Spring Web
 - Maven
 - Lombok
+- JSON (Request / Response)
 
-## Projektstruktur
-- Controller: REST-Endpunkte
-- Service: Business-Logik
-- Repository: Datenzugriff (In-Memory)
-- Config: Bean-Konfiguration
-- Model: Datenobjekte
+---
 
+## 📂 Projektstruktur
 
-### Beispiel-Response
-```json
-### 1. Alle Mitarbeiter abrufen
+- **Controller**  
+  REST-Endpunkte und Request-Handling
+
+- **Service**  
+  Business-Logik und Datenverarbeitung
+
+- **Repository**  
+  In-Memory-Datenhaltung (Java Collections)
+
+- **Model**  
+  Datenobjekte (z. B. `Employee`, `UpdateEmployee`)
+
+- **Config**  
+  Bean- und Projektkonfiguration
+
+---
+
+## 🔌 API-Endpunkte
+
+### 1️⃣ Alle Mitarbeiter abrufen
 - **Methode:** GET  
 - **URL:** `/rest/api/employee/list`  
-- **Beschreibung:** Liefert eine Liste aller Mitarbeiter zurück.  
-- **Beispiel Response:**
+- **Beschreibung:** Liefert eine Liste aller Mitarbeiter zurück  
+
+**Beispiel Response:**
 ```json
 [
   {
@@ -41,65 +68,3 @@ Dieses Projekt dient zum Lernen von:
     "lastname": "Mustermann"
   }
 ]
-2. Mitarbeiter nach ID abrufen
-
-Methode: GET
-
-URL: /rest/api/employee/{id}
-
-Beschreibung: Liefert einen einzelnen Mitarbeiter anhand seiner ID.
-
-Path Variable: id – die eindeutige ID des Mitarbeiters
-
-Beispiel Response:
-{
-  "id": "1",
-  "firstname": "Ozcan",
-  "lastname": "Yildiz"
-}
-3. Mitarbeiter nach Vor- und Nachname suchen
-
-Methode: GET
-
-URL: /rest/api/employee/with-params?firstnameString=Ozcan&lastnameString=Yildiz
-
-Beschreibung: Filtert die Mitarbeiter nach Vorname und/oder Nachname.
-
-Query-Parameter:
-
-firstnameString (optional)
-
-lastnameString (optional)
-
-Beispiel Response:
-
-[
-  {
-    "id": "1",
-    "firstname": "Ozcan",
-    "lastname": "Yildiz"
-  }
-]
-
-4. Mitarbeiter speichern / anlegen
-
-Methode: POST
-
-URL: /rest/api/employee/save-employee
-
-Beschreibung: Legt einen neuen Mitarbeiter an oder speichert Änderungen.
-
-Request Body:
-{
-  "id": "3",
-  "firstname": "Anna",
-  "lastname": "Schmidt"
-}
-
-Beispiel Response:
-
-{
-  "id": "3",
-  "firstname": "Anna",
-  "lastname": "Schmidt"
-}
